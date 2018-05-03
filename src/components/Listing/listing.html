@@ -1,16 +1,20 @@
-<section class="listing">
+<section class="listing dark">
   <div class="container">
     <h2>Posts</h2>
     <div class="categories">
       <each loop="cat in contentful.categories">
+        <div class="category">
         <h3>{{ cat.fields.name }}</h3>
         <ol>
           <each loop="article, index in contentful.posts">
             <if condition="index < 5 && article.fields.category && article.fields.category.fields.name == cat.fields.name">
-              <li><a href="/{{ article.slug }}">{{ article.fields.title }}</a><br />{{ article.fields.description }}<br /><span class="post-date">{{ article.date }}</span></li>
+              
+              <li><a href="/{{ article.slug }}"><span class="title">{{ article.fields.title }}</span><br /><span class="description">{{ article.fields.description }}</span><br /><span class="post-date">{{ article.date }}</span></a></li>
+              
             </if>
           </each>
         </ol>
+      </div>
       </each>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <extends src='index.html'>
   <block name='content'>
-    <div class="hero">
+    <div class="hero" style="{{ item.fields.shareImage && item.fields.shareImage.fields ?  `background: linear-gradient(rgba(50,50,50,0.3), rgba(50,50,50,0.6)), url('${item.fields.shareImage.fields.file.url}') no-repeat; background-size: cover; background-position: 0 60%;`  : '' }}">
       <div class="container">
         <h1>{{ item.fields.title }}</h1>
         <p>By {{ item.author }} | {{ item.date }}</p>

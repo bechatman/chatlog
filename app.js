@@ -74,7 +74,7 @@ module.exports = {
       accessToken: env !== 'production' ? previewToken : deliveryToken,
       preview: env !== 'production',
       // By default, this plugin will only fetch data once when you start your watcher, for development speed purposes. This means that if you change your data, you will have to restart the watcher to pick up the changes. If you are in a phase where you are making frequent data changes and would like a more aggressive updating strategy, you can set the aggressiveRefresh option to true, and your dreams will come true. However, note that this will slow down your local development, as it will fetch and link all entires every time you save a file, so it's only recommended for temporary use.
-      // aggressiveRefresh: true,
+      aggressiveRefresh: true,
       contentTypes: [
         {
           name: 'pages',
@@ -94,7 +94,7 @@ module.exports = {
           id: 'post',
           transform: post => {
             const updated = post;
-            const { category, content, author } = updated.fields;
+            const { category, content, author, manualDate } = updated.fields;
             const { createdAt } = updated.sys;
             if (category.fields) {
               const cat = category.fields.name
@@ -105,7 +105,9 @@ module.exports = {
               updated.slug = `${updated.fields.slug}`;
             }
             updated.content = marked(content);
-            updated.date = moment(createdAt).format('D MMMM YYYY');
+            updated.date = manualDate
+              ? moment(manualDate).format('D MMMM YYYY')
+              : moment(createdAt).format('D MMMM YYYY');
             updated.author = author.fields.name;
             return updated;
           },

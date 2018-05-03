@@ -163,5 +163,11 @@ i {
 
 a {
   color: $primary;
-  text-decoration: none;
+  text-decoration: underline;
+}
+
+@media (pointer: fine) {
+  a:hover {
+    text-decoration: none;
+  }
 }
