@@ -1,21 +1,22 @@
 <section class="listing dark">
   <div class="container">
     <h2>Posts</h2>
-    <div class="categories">
-      <each loop="cat in contentful.categories">
-        <div class="category">
-        <h3>{{ cat.fields.name }}</h3>
-        <ol>
-          <each loop="article, index in contentful.posts">
-            <if condition="index < 5 && article.fields.category && article.fields.category.fields.name == cat.fields.name">
-              
-              <li><a href="/{{ article.slug }}"><span class="title">{{ article.fields.title }}</span><br /><span class="description">{{ article.fields.description }}</span><br /><span class="post-date">{{ article.date }}</span></a></li>
-              
+    <ol class="posts">
+      <each loop="article, index in contentful.posts">
+        <li class="post" data-index="{{ index }}">  
+          <a href="/{{ article.slug }}">
+            <if condition="article.fields.shareImage && article.fields.shareImage.fields">
+              <img src="{{ article.fields.shareImage.fields.file.url }}" alt="" />              
             </if>
-          </each>
-        </ol>
-      </div>
+            <h3 class="title">{{ article.fields.title }}</h3>
+            <p class="description">{{ article.fields.description }}</p>
+            <p class="post-date">{{ article.date }}</p>
+            <if condition="article.fields.category.fields">
+              <div class="category">{{ article.fields.category.fields.name }}</div>
+            </if>
+          </a>
+        </li>
       </each>
-    </div>
+    </ol>
   </div>
 </section>

@@ -9,76 +9,69 @@
     color: white;
   }
 
-  .categories {
+  .posts {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2%;
+    align-items: stretch;
+    list-style-type: none;
+    padding: 0;
+    margin: 4em auto;
+    grid-template-columns: 1fr;
+    grid-row-gap: 2em;
+    grid-column-gap: 2em;
 
-    .category {
+    @media screen and (min-width: $small) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: $medium) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .post {
       background-color: white;
       border-radius: 5px;
       box-shadow: 1px 1px 0px #111;
+      overflow: hidden;
+      position: relative;
 
-      h3 {
-        padding: 0.5rem 1.5rem;
-        margin: 1rem 0 0 0;
+      a {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        text-decoration: none;
+        color: black;
       }
 
-      ol {
-        list-style-type: none;
-        margin: 1em 0;
-        padding: 0;
+      h3.title {
+        padding: 0.5rem 1.5rem;
+        margin: 3rem 0 0 0;
+      }
 
-        li a {
-          align-items: flex-start;
-          display: flex;
-          justify-content: flex-start;
-          flex-wrap: wrap;
-          padding: 0.5rem 1.5rem;
-          width: 100%;
-          text-decoration: none;
-          transition: background-color 0.19s ease;
-          &:hover {
-            background-color: transparentize($secondary, 0.8);
-            transition: background-color 0.19s ease;
-          }
+      img + h3.title {
+        margin-top: 1rem;
+      }
 
-          br {
-            display: none;
-          }
+      .description {
+        padding: 0.5rem 1.5rem;
+      }
 
-          .title {
-            order: 1;
-            font-size: 1.4em;
-            font-weight: 900;
-            text-decoration: none;
-            width: 80%;
-          }
+      .post-date {
+        color: $secondary;
+        font-size: 0.9em;
+        padding: 0.5rem 1.5rem 0;
+        text-align: right;
+        width: 100%;
+      }
 
-          .description {
-            color: $sec-dark;
-            font-size: 0.85em;
-            order: 3;
-            padding-top: 1em;
-            padding-bottom: 0.25em;
-            width: 100%;
-          }
-
-          .post-date {
-            align-self: flex-end;
-            color: $secondary;
-            order: 2;
-            width: 20%;
-            transition: color 0.19s ease;
-          }
-
-          &:hover {
-            .post-date {
-              color: black;
-              transition: color 0.19s ease;
-            }
-          }
-        }
+      .category {
+        background-color: $alert;
+        color: white;
+        font-size: 0.9em;
+        padding: 0.5em;
+        position: absolute;
+        top: 0;
+        left: 0;
       }
     }
   }
