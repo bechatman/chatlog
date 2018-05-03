@@ -8,5 +8,8 @@
       </if>
 
     </each>
+    <if condition="item.fields.slug =='chatlog'">
+      <include src='../components/Listing/listing.html'></include>
+    </if>
   </block>
 </extends>

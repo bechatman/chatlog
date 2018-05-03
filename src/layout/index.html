@@ -30,10 +30,22 @@
     <link rel="icon" type="image/png" href="/assets/img/favicon-32x32.png" sizes="32x32">
 
     <link rel="stylesheet" href="/assets/style.css">
+    <if condition="env === 'production'">
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NQ8P5HF');</script>
+<!-- End Google Tag Manager -->
+</if>
   </head>
   <body class="page-{{ item ? /[^/]*$/.exec(item.fields.slug) : '' }}">
+    <!-- Google Tag Manager (noscript) -->
+<if condition="env === 'production'"><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQ8P5HF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript></if>
+<!-- End Google Tag Manager (noscript) -->
     <include src='../components/Header/header.html'></include>
-
     <main>
       <block name='content'></block>
     </main>
@@ -41,7 +53,6 @@
     <include src='../components/Footer/footer.html'></include>
 
     <block name='javascript'>
-      <script>window.locals={{ JSON.stringify(locals) }}</script>
       <script src='/assets/main.js' defer></script>
     </block>
   </body>

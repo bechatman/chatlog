@@ -24,6 +24,7 @@ locals.md = marked;
 locals.year = new Date().getFullYear();
 // Sitename to be used in templates
 locals.sitename = 'Chatlog';
+locals.env = env;
 
 module.exports = {
   devtool: 'source-map',
@@ -112,6 +113,10 @@ module.exports = {
             path: 'src/layout/post.html',
             output: post => `${post.slug}.html`
           }
+        },
+        {
+          name: 'categories',
+          id: 'category'
         }
       ],
       json: 'data.json'

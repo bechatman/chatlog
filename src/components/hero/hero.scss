@@ -1,6 +1,10 @@
 .hero {
-  background-color: $primary;
+  background-color: $secondary;
   text-align: center;
+
+  &.with-background {
+    background-size: cover;
+  }
 
   h1,
   p {

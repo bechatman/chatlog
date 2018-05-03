@@ -1,0 +1,17 @@
+<section class="listing">
+  <div class="container">
+    <h2>Posts</h2>
+    <div class="categories">
+      <each loop="cat in contentful.categories">
+        <h3>{{ cat.fields.name }}</h3>
+        <ol>
+          <each loop="article, index in contentful.posts">
+            <if condition="index < 5 && article.fields.category && article.fields.category.fields.name == cat.fields.name">
+              <li><a href="/{{ article.slug }}">{{ article.fields.title }}</a><br />{{ article.fields.description }}<br /><span class="post-date">{{ article.date }}</span></li>
+            </if>
+          </each>
+        </ol>
+      </each>
+    </div>
+  </div>
+</section>
