@@ -1,0 +1,48 @@
+<span class="mobile-icon">☰</span>
+<nav>
+  <ul class="extra-nav">
+    <each loop="menu in contentful.menus">
+      <if condition="menu.fields.menuTitle == 'Extra Navigation'">
+        <each loop="menuLink in menu.fields.menuLinks">
+          <li>
+            <include src='../components/Menu/menuLoop.html'></include>
+          </li>
+        </each>
+      </if>
+    </each>
+  </ul>
+  <ul class="main-nav">
+    <each loop="menu in contentful.menus">
+      <if condition="menu.fields.menuTitle == 'Main Navigation'">
+        <each loop="menuLink in menu.fields.menuLinks">
+          <!-- This Menu link has Child links -->
+          <if condition="menuLink.fields.childLinks">
+            <li class="toplevel">
+              <include src='../components/Menu/menuLoop.html'></include>
+
+              <div class="dropdown">
+                <ul class="submenu">
+                  <each loop="childLink in menuLink.fields.childLinks">
+                    <each loop="menuLink in contentful.menuLinks">
+                      <if condition="childLink.sys.id === menuLink.sys.id">
+                        <li>
+                          <include src='../components/Menu/menuLoop.html'></include>
+                        </li>
+                      </if>
+                    </each>
+                  </each>
+                </ul>
+              </div>
+            </li>
+          </if>
+          <!-- This Menu link doesn't have Child links -->
+          <else>
+            <li class="toplevel">
+              <include src='../components/Menu/menuLoop.html'></include>
+            </li>
+          </else>
+        </each>
+      </if>
+    </each>
+  </ul>
+</nav>

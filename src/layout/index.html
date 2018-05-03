@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ item ? item.fields.title + ' | ' + sitename : sitename }}</title>
+    <meta name="description" content="{{item ? item.fields.description : ''}}">
+
+    <!-- Open Graph information -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ item ? item.fields.title : sitename }}" />
+    <meta property="og:description" content="{{ item ? item.fields.description : '' }}" />
+    <if condition="item.fields.shareImage">
+      <meta property="og:image" content="{{ item.fields.shareImage.fields.file.url }}" />
+    </if>
+
+    <!-- Twitter card information -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ item ? item.fields.title : sitename }}">
+    <meta name="twitter:description" content="{{ item ? item.fields.description : '' }}">
+    <if condition="item.fields.shareImage">
+      <meta name="twitter:image" content="{{ item.fields.shareImage.fields.file.url }}" />
+    </if>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/assets/img/favicon-32x32.png" sizes="32x32">
+
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+  <body class="page-{{ item ? /[^/]*$/.exec(item.fields.slug) : '' }}">
+    <include src='../components/Header/header.html'></include>
+
+    <main>
+      <block name='content'></block>
+    </main>
+
+    <include src='../components/Footer/footer.html'></include>
+
+    <block name='javascript'>
+      <script>window.locals={{ JSON.stringify(locals) }}</script>
+      <script src='/assets/main.js' defer></script>
+    </block>
+  </body>
+</html>

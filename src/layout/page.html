@@ -1,0 +1,12 @@
+<extends src='index.html'>
+  <block name='content'>
+    <include src='../components/hero/hero.html'></include>
+    <each loop="section in item.fields.components">
+
+      <if condition="section.sys.contentType.sys.id === 'oneColumn'">
+        <include src='../components/oneColumn/oneColumn.html'></include>
+      </if>
+
+    </each>
+  </block>
+</extends>

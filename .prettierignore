@@ -1,0 +1,4 @@
+# NOTE: Move this to package.json if prettier adds that ability
+
+# Ignore build files
+public

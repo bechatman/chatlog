@@ -1,0 +1,15 @@
+<extends src='index.html'>
+  <block name='content'>
+    <div class="hero">
+      <div class="container">
+        <h1>{{ item.fields.title }}</h1>
+        <p>By {{ item.author }} | {{ item.date }}</p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="container">
+        {{ item.content }}
+      </div>
+    </div>
+  </block>
+</extends>

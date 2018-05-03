@@ -1,0 +1,167 @@
+@import 'normalize.css';
+@import 'variables';
+// scss-lint:disable all
+@import '../components/**/*.scss';
+// scss-lint:enable all
+
+// ==============================
+// Layout
+// General layout styles that may be overriden by components
+// ==============================
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 80%;
+
+  @media screen and (min-width: $small) {
+    font-size: 100%;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: $font;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+// ==============================
+// Containers
+// ==============================
+
+.container {
+  margin: 0 auto;
+  max-width: $large;
+  padding-bottom: $container-spacing;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: $container-spacing;
+  width: 100%;
+}
+
+.collapse-all {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.collapse-top {
+  padding-top: 1em;
+}
+
+.collapse-bottom {
+  padding-bottom: 1em;
+}
+
+// ==============================
+// Images
+// ==============================
+
+img,
+svg {
+  height: auto;
+  max-width: 100%;
+  position: relative;
+}
+
+svg {
+  max-height: 100%;
+}
+
+// ==============================
+// Embeds
+// ==============================
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// =========================
+// Headings
+// =========================
+
+.title {
+  a {
+    color: white;
+  }
+}
+
+h1 {
+  font-size: 2.6em;
+}
+
+h2 {
+  font-family: $font-condensed;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+h3 {
+  font-family: $font-condensed;
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: 300;
+}
+
+h4 {
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+// =========================
+// Body
+// =========================
+
+p,
+ul,
+ol {
+  font-size: 1.125em;
+  margin: 0 0 1em;
+}
+
+li {
+  margin-bottom: 0.3em;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+// =========================
+// Links and buttons
+// =========================
+
+a {
+  color: $primary;
+  text-decoration: none;
+}
