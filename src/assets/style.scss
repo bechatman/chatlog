@@ -113,30 +113,23 @@ svg {
 // Headings
 // =========================
 
-.title {
-  a {
-    color: white;
-  }
-}
-
 h1 {
-  font-size: 3.2em;
+  font-family: $headline;
+  font-size: 4em;
 }
 
 h2 {
-  font-family: $font-condensed;
-  font-size: 2.4em;
-  font-weight: 300;
+  font-family: $headline;
+  font-size: 3em;
 }
 
 h3 {
-  font-family: $font-condensed;
+  font-family: $headline;
   font-size: 1.8em;
-  font-style: italic;
-  font-weight: 300;
 }
 
 h4 {
+  font-family: $headline;
   font-size: 0.8em;
   text-transform: uppercase;
 }
@@ -145,14 +138,21 @@ h4 {
 // Body
 // =========================
 
-p,
+p {
+  color: #555;
+  font-size: 1.25em;
+  font-weight: 400;
+}
 ul,
 ol {
-  font-size: 1.125em;
+  font-weight: 400;
   margin: 0 0 1em;
 }
 
 li {
+  color: #555;
+  font-size: 1.25em;
+  font-weight: 400;
   margin-bottom: 0.3em;
 }
 
