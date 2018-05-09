@@ -1,32 +1,95 @@
 header {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
   position: fixed;
   width: 100%;
 
   .title {
     font-family: $display;
     font-size: 2.5em;
-    text-align: center;
     transition: transform 0.36s ease;
-    transform: scale3d(1, 1, 1);
-
-    &.scrolled {
-      transform: scale3d(0.5, 0.5, 0.5);
-    }
 
     a {
-      display: inline-flex;
+      align-items: flex-start;
+      display: block;
       color: white;
+      justify-content: flex-start;
       text-decoration: none;
       text-shadow: 3px 3px 3px #555;
-      span.scrolled {
-        overflow: hidden;
-        transition: width 0.36s ease;
-        width: 1px;
+      transition: transform 0.36s ease;
+      transform: scale3d(1, 1, 1);
+      transform-origin: left center;
+
+      span {
+        opacity: 1;
+        transform: translateY(0);
       }
+
       &:hover {
-        span.scrolled {
-          width: 3.6em;
+        transform: scale3d(1.1, 1.1, 1.1);
+      }
+    }
+
+    &.scrolled a {
+      transform: scale3d(0.75, 0.75, 0.75);
+
+      span:not(:first-of-type) {
+        transition: transform 0.19s ease, opacity 0.19s ease 0.08s;
+        opacity: 0;
+        transform: translateY(-1em);
+
+        &:nth-child(2) {
+          transition: transform 0.19s ease #{0.06 * 5}s,
+            opacity 0.19s ease #{0.08 * 6}s;
+        }
+        &:nth-child(3) {
+          transition: transform 0.19s ease #{0.06 * 4}s,
+            opacity 0.19s ease #{0.08 * 5}s;
+        }
+        &:nth-child(4) {
+          transition: transform 0.19s ease #{0.06 * 3}s,
+            opacity 0.19s ease #{0.08 * 4}s;
+        }
+        &:nth-child(5) {
+          transition: transform 0.19s ease #{0.06 * 2}s,
+            opacity 0.19s ease #{0.08 * 3}s;
+        }
+        &:nth-child(6) {
+          transition: transform 0.19s ease #{0.06 * 1}s,
+            opacity 0.19s ease #{0.08 * 2}s;
+        }
+        &:nth-child(7) {
+          transition: transform 0.19s ease #{0.06 * 0}s,
+            opacity 0.19s ease #{0.08 * 1}s;
+        }
+      }
+
+      &:hover span {
+        opacity: 1;
+        transform: translateY(0);
+
+        &:nth-child(2) {
+          transition: transform 0.19s ease #{0.06 * 0}s,
+            opacity 0.19s ease #{0.08 * 1}s;
+        }
+        &:nth-child(3) {
+          transition: transform 0.19s ease #{0.06 * 1}s,
+            opacity 0.19s ease #{0.08 * 2}s;
+        }
+        &:nth-child(4) {
+          transition: transform 0.19s ease #{0.06 * 2}s,
+            opacity 0.19s ease #{0.08 * 3}s;
+        }
+        &:nth-child(5) {
+          transition: transform 0.19s ease #{0.06 * 3}s,
+            opacity 0.19s ease #{0.08 * 4}s;
+        }
+        &:nth-child(6) {
+          transition: transform 0.19s ease #{0.06 * 4}s,
+            opacity 0.19s ease #{0.08 * 5}s;
+        }
+        &:nth-child(7) {
+          transition: transform 0.19s ease #{0.06 * 5}s,
+            opacity 0.19s ease #{0.08 * 6}s;
         }
       }
     }

@@ -10,15 +10,19 @@ function throttle(fn, wait) {
 
 function scrolled() {
   const title = document.querySelector('.title');
-  const span = document.querySelector('.title span');
 
   if (window.pageYOffset > 0) {
     title.classList.add('scrolled');
-    span.classList.add('scrolled');
   } else {
     title.classList.remove('scrolled');
-    span.classList.remove('scrolled');
   }
 }
 
 window.addEventListener('scroll', scrolled);
+window.addEventListener('DOMContentLoaded', () => {
+  const title = document.querySelector('.title a');
+  const updatedTitle = title.innerHTML
+    .split('')
+    .map(item => `<span>${item}</span>`);
+  title.innerHTML = updatedTitle.join('');
+});
