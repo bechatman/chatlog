@@ -30,7 +30,7 @@
     <meta property="og:title" name="twitter:title" content="{{ item ? item.fields.title : sitename }}" />
     <meta property="og:description" name="twitter:description" content="{{ item ? item.fields.description : '' }}" />
     <if condition="item.fields.shareImage">
-      <meta property="og:image" name="twitter:image" content="{{ item.fields.shareImage.fields.file.url }}" />
+      <meta property="og:image" name="twitter:image" content="https:{{ item.fields.shareImage.fields.file.url }}" />
       <meta name="twitter:card" content="summary_large_image">
     </if>
     <else>
