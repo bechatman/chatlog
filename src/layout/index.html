@@ -25,21 +25,19 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/assets/img/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <!-- Open Graph information -->
+    <!-- social information -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="{{ item ? item.fields.title : sitename }}" />
-    <meta property="og:description" content="{{ item ? item.fields.description : '' }}" />
+    <meta property="og:title" name="twitter:title" content="{{ item ? item.fields.title : sitename }}" />
+    <meta property="og:description" name="twitter:description" content="{{ item ? item.fields.description : '' }}" />
     <if condition="item.fields.shareImage">
-      <meta property="og:image" content="{{ item.fields.shareImage.fields.file.url }}" />
+      <meta property="og:image" name="twitter:image" content="{{ item.fields.shareImage.fields.file.url }}" />
+      <meta name="twitter:card" content="summary_large_image">
     </if>
+    <else>
+      <meta name="twitter:card" content="summary">
+    </else>
 
     <!-- Twitter card information -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{ item ? item.fields.title : sitename }}">
-    <meta name="twitter:description" content="{{ item ? item.fields.description : '' }}">
-    <if condition="item.fields.shareImage">
-      <meta name="twitter:image" content="{{ item.fields.shareImage.fields.file.url }}" />
-    </if>
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="/assets/img/favicon.ico">
