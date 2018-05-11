@@ -1,3 +1,33 @@
+@mixin animation-remove {
+  opacity: 1;
+  transform: translateY(0);
+
+  &:nth-child(2) {
+    transition: transform 0.19s ease #{0.06 * 0}s,
+      opacity 0.19s ease #{0.08 * 1}s;
+  }
+  &:nth-child(3) {
+    transition: transform 0.19s ease #{0.06 * 1}s,
+      opacity 0.19s ease #{0.08 * 2}s;
+  }
+  &:nth-child(4) {
+    transition: transform 0.19s ease #{0.06 * 2}s,
+      opacity 0.19s ease #{0.08 * 3}s;
+  }
+  &:nth-child(5) {
+    transition: transform 0.19s ease #{0.06 * 3}s,
+      opacity 0.19s ease #{0.08 * 4}s;
+  }
+  &:nth-child(6) {
+    transition: transform 0.19s ease #{0.06 * 4}s,
+      opacity 0.19s ease #{0.08 * 5}s;
+  }
+  &:nth-child(7) {
+    transition: transform 0.19s ease #{0.06 * 5}s,
+      opacity 0.19s ease #{0.08 * 6}s;
+  }
+}
+
 header {
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
   position: fixed;
@@ -20,8 +50,7 @@ header {
       transform-origin: left center;
 
       span {
-        opacity: 1;
-        transform: translateY(0);
+        @include animation-remove;
       }
 
       &:hover {
@@ -64,33 +93,7 @@ header {
       }
 
       &:hover span {
-        opacity: 1;
-        transform: translateY(0);
-
-        &:nth-child(2) {
-          transition: transform 0.19s ease #{0.06 * 0}s,
-            opacity 0.19s ease #{0.08 * 1}s;
-        }
-        &:nth-child(3) {
-          transition: transform 0.19s ease #{0.06 * 1}s,
-            opacity 0.19s ease #{0.08 * 2}s;
-        }
-        &:nth-child(4) {
-          transition: transform 0.19s ease #{0.06 * 2}s,
-            opacity 0.19s ease #{0.08 * 3}s;
-        }
-        &:nth-child(5) {
-          transition: transform 0.19s ease #{0.06 * 3}s,
-            opacity 0.19s ease #{0.08 * 4}s;
-        }
-        &:nth-child(6) {
-          transition: transform 0.19s ease #{0.06 * 4}s,
-            opacity 0.19s ease #{0.08 * 5}s;
-        }
-        &:nth-child(7) {
-          transition: transform 0.19s ease #{0.06 * 5}s,
-            opacity 0.19s ease #{0.08 * 6}s;
-        }
+        @include animation-remove;
       }
     }
   }
