@@ -13,6 +13,8 @@ const deliveryToken = process.env.ACCESS_TOKEN;
 // This is the local variable object to be accessed via template files
 const space = process.env.SPACE_ID;
 // The variables above implement dotenv and pull access tokens from an external source.
+// site URL
+const siteUrl = 'https://www.chatlog.blog';
 const locals = {};
 // Add markdown to local variables so they can be used in templates
 marked.setOptions({
@@ -25,6 +27,7 @@ locals.year = new Date().getFullYear();
 // Sitename to be used in templates
 locals.sitename = 'Chatlog';
 locals.env = env;
+locals.siteUrl = siteUrl;
 
 module.exports = {
   devtool: 'source-map',
@@ -79,6 +82,11 @@ module.exports = {
         {
           name: 'pages',
           id: 'page',
+          transform: page => {
+            const updated = page;
+            updated.canonical = `${siteUrl}`;
+            return updated;
+          },
           template: {
             path: 'src/layout/page.html',
             output: page => {
@@ -96,10 +104,9 @@ module.exports = {
             const updated = post;
             const { category, content, author, manualDate } = updated.fields;
             const { createdAt } = updated.sys;
-            if (category.fields) {
-              const cat = category.fields.name
-                .toLowerCase()
-                .replace(/\s/g, '-');
+            if (category.fields && category.fields.slug) {
+              const cat = category.fields.slug;
+              updated.category = category.fields.title;
               updated.slug = `${cat}/${updated.fields.slug}`;
             } else {
               updated.slug = `${updated.fields.slug}`;
@@ -109,16 +116,13 @@ module.exports = {
               ? moment(manualDate).format('D MMMM YYYY')
               : moment(createdAt).format('D MMMM YYYY');
             updated.author = author.fields.name;
+            updated.canonical = `${siteUrl}/${updated.slug}`;
             return updated;
           },
           template: {
             path: 'src/layout/post.html',
             output: post => `${post.slug}.html`
           }
-        },
-        {
-          name: 'categories',
-          id: 'category'
         }
       ],
       json: 'data.json'

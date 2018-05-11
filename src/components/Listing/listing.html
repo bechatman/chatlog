@@ -11,8 +11,8 @@
             <h3 class="title">{{ article.fields.title }}</h3>
             <p class="description">{{ article.fields.description }}</p>
             <p class="post-date">{{ article.date }}</p>
-            <if condition="article.fields.category.fields">
-              <div class="category">{{ article.fields.category.fields.name }}</div>
+            <if condition="article.category">
+              <div class="category">{{ article.category }}</div>
             </if>
           </a>
         </li>
