@@ -107,15 +107,24 @@ module.exports = {
             if (category.fields && category.fields.slug) {
               const cat = category.fields.slug;
               updated.category = category.fields.title;
+              updated.categoryLink = `/${cat}`;
               updated.slug = `${cat}/${updated.fields.slug}`;
             } else {
               updated.slug = `${updated.fields.slug}`;
             }
-            updated.content = marked(content);
+
+            if (content) {
+              updated.content = marked(content);
+            } else {
+              updated.content = '';
+            }
+
             updated.date = manualDate
               ? moment(manualDate).format('D MMMM YYYY')
               : moment(createdAt).format('D MMMM YYYY');
-            updated.author = author.fields.name;
+            if (author && author.fields) {
+              updated.author = author.fields.name;
+            }
             updated.canonical = `${siteUrl}/${updated.slug}`;
             return updated;
           },

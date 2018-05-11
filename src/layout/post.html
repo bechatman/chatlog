@@ -3,7 +3,7 @@
     <div class="hero" style="{{ item.fields.shareImage && item.fields.shareImage.fields ?  `background: linear-gradient(rgba(50,50,50,0.3), rgba(50,50,50,0.6)), url('${item.fields.shareImage.fields.file.url}') no-repeat; background-size: cover; background-position: 0 60%;`  : '' }}">
       <div class="container">
         <h1>{{ item.fields.title }}</h1>
-        <p>By {{ item.author }} | {{ item.date }}</p>
+        <p><span class="byline">By {{ item.author }}</span> <span class="hero-date">{{ item.date }}</span> <span class="category"><a href="{{ item.categoryLink }}">{{ item.category }}</a></span></p>
       </div>
     </div>
     <div class="blogPost content">

@@ -1,7 +1,7 @@
 function hasPosts() {
   const listing = document.querySelector('.listing');
   const posts = listing.querySelectorAll('.post');
-  if (!posts.length) {
+  if (listing && !posts.length) {
     listing.remove();
   }
 }

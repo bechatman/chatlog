@@ -9,7 +9,33 @@
   }
 
   h1,
-  p {
+  p,
+  a {
     color: white;
+  }
+
+  p {
+    align-items: middle;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .byline {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-bottom: 0.35em;
+    width: 100%;
+  }
+
+  .hero-date {
+    &::after {
+      content: '•';
+      display: inline-block;
+      width: 1em;
+      height: 1rem;
+      padding-left: 0.25em;
+      margin-right: 0.25em;
+    }
   }
 }
