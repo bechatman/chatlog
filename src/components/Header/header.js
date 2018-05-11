@@ -12,9 +12,9 @@ function scrolled() {
 window.addEventListener('scroll', scrolled);
 window.addEventListener('DOMContentLoaded', () => {
   heroLocation =
-    document.querySelector('.hero').getBoundingClientRect().bottom -
+    document.querySelector('.hero').getBoundingClientRect().bottom +
+    window.pageYOffset -
     document.querySelector('body > header').getBoundingClientRect().height;
-  console.log(heroLocation);
   const title = document.querySelector('.title a');
   const updatedTitle = title.innerHTML
     .split('')
