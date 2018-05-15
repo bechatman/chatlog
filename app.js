@@ -100,6 +100,9 @@ module.exports = {
         {
           name: 'posts',
           id: 'post',
+          filters: {
+            order: '-sys.createdAt'
+          },
           transform: post => {
             const updated = post;
             const { category, content, author, manualDate } = updated.fields;
