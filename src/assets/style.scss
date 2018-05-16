@@ -34,6 +34,7 @@ body {
   font-family: $font;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
 }
 
@@ -115,21 +116,25 @@ svg {
 
 h1 {
   font-family: $headline;
+  font-weight: 600;
   font-size: 4em;
 }
 
 h2 {
   font-family: $headline;
+  font-weight: 600;
   font-size: 3em;
 }
 
 h3 {
   font-family: $headline;
+  font-weight: 600;
   font-size: 1.8em;
 }
 
 h4 {
   font-family: $headline;
+  font-weight: 600;
   font-size: 0.8em;
   text-transform: uppercase;
 }
@@ -156,9 +161,16 @@ li {
   margin-bottom: 0.3em;
 }
 
+strong,
+b {
+  font-style: normal;
+  font-weight: 800;
+}
+
 em,
 i {
   font-style: italic;
+  font-weight: 700;
 }
 
 // =========================
@@ -173,5 +185,36 @@ a {
 @media (pointer: fine) {
   a:hover {
     text-decoration: none;
+  }
+}
+
+.content {
+  a {
+    color: black;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.19s ease-in-out 0.09s;
+
+    &::after {
+      background: $primary;
+      bottom: 0.15em;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transition: height 0.19s ease-in-out;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+
+  @media (pointer: fine) {
+    a:hover {
+      color: white;
+      &::after {
+        height: calc(100% - 0.15em);
+      }
+    }
   }
 }
