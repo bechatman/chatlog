@@ -8,6 +8,9 @@
       </if>
 
     </each>
+    <if condition="item.fields.slug === 'music'">
+      <include src='../components/TopTracks/topTracks.html'></include>
+    </if>
     <include src='../components/Listing/listing.html'></include>
   </block>
 </extends>
