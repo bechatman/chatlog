@@ -4,9 +4,9 @@ const lfm = (command, options) => {
       item => `${item}=${options[item]}`
     );
     const params = `&${paramsAll.join('&')}`;
-    return `http://ws.audioscrobbler.com/2.0/?method=${command}&user=bechatman&api_key=25b4be602a0fd2eefc999e4f620f3275${params}&format=json`;
+    return `https://ws.audioscrobbler.com/2.0/?method=${command}&user=bechatman&api_key=25b4be602a0fd2eefc999e4f620f3275${params}&format=json`;
   }
-  return `http://ws.audioscrobbler.com/2.0/?method=${command}&user=bechatman&api_key=25b4be602a0fd2eefc999e4f620f3275&format=json`;
+  return `https://ws.audioscrobbler.com/2.0/?method=${command}&user=bechatman&api_key=25b4be602a0fd2eefc999e4f620f3275&format=json`;
 };
 
 function loadAlbums(albums) {
