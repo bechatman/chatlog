@@ -186,29 +186,31 @@ a {
 }
 
 .content {
-  a {
-    color: black;
-    display: inline-block;
-    position: relative;
-    text-decoration: none;
-    transition: color 0.19s ease-in-out 0.09s;
+  @media (min-width: $small) {
+    a {
+      color: black;
+      display: inline-block;
+      position: relative;
+      text-decoration: none;
+      transition: color 0.19s ease-in-out 0.09s;
 
-    &::after {
-      background: $primary;
-      bottom: 0.15em;
-      content: '';
-      height: 1px;
-      left: 0;
-      position: absolute;
-      transition: height 0.19s ease-in-out;
-      width: 100%;
-      z-index: -1;
-    }
-
-    &:hover {
-      color: white;
       &::after {
-        height: calc(100% - 0.15em);
+        background: $primary;
+        bottom: 0.15em;
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        transition: height 0.19s ease-in-out;
+        width: 100%;
+        z-index: -1;
+      }
+
+      &:hover {
+        color: white;
+        &::after {
+          height: calc(100% - 0.15em);
+        }
       }
     }
   }
