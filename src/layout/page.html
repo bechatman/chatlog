@@ -6,6 +6,9 @@
       <if condition="section.sys.contentType.sys.id === 'oneColumn'">
         <include src='../components/oneColumn/oneColumn.html'></include>
       </if>
+      <if condition="section.sys.contentType.sys.id === 'articleCollection'">
+        <include src='../components/Listing/articleCollection.html'></include>
+      </if>
 
     </each>
     <if condition="item.fields.slug === 'music'">
