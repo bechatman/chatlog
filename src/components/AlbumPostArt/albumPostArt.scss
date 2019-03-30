@@ -1,0 +1,17 @@
+.albumArt {
+  margin: 0 auto 3em;
+  max-width: 300px;
+  padding: 0;
+  img {
+    max-width: 100%;
+  }
+  figcaption {
+    color: $secondary;
+    text-align: right;
+  }
+  
+  @media screen and (min-width: $small) {
+    margin: 0 0 1em 1em;
+    float: right;
+  }
+}
