@@ -3,13 +3,13 @@
     <h2>Posts</h2>
     <ol class="posts">
       <each loop="article, index in contentful.posts">
-        <if condition="section.fields.query == 'All'">
+        <if condition="section.fields.query === 'All'">
           <if condition="item.fields.slug === 'chatlog' || article.category.toLowerCase() === item.fields.slug">
             <include src="../components/Listing/listingItem.html"></include>
           </if>
         </if>
         <else>
-          <if condition="article.fields.tags.includes(section.fields.query)">
+          <if condition="section.fields.query && article.fields.tags.includes(section.fields.query)">
             <include src="../components/Listing/listingItem.html"></include>
           </if>
         </else>
