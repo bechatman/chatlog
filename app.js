@@ -84,7 +84,7 @@ module.exports = {
           id: 'page',
           transform: page => {
             const updated = page;
-            updated.canonical = `${siteUrl}`;
+            updated.canonical = `${siteUrl}/${updated.fields.slug}`;
             return updated;
           },
           template: {
@@ -106,22 +106,15 @@ module.exports = {
           transform: post => {
             const updated = post;
             const {
-              category,
               content,
               author,
               manualDate,
               artist,
-              album
+              album,
+              tags,
+              slug
             } = updated.fields;
             const { createdAt } = updated.sys;
-            if (category.fields && category.fields.slug) {
-              const cat = category.fields.slug;
-              updated.category = category.fields.title;
-              updated.categoryLink = `/${cat}`;
-              updated.slug = `${cat}/${updated.fields.slug}`;
-            } else {
-              updated.slug = `${updated.fields.slug}`;
-            }
 
             if (content) {
               updated.content = marked(content);
@@ -129,10 +122,18 @@ module.exports = {
               updated.content = '';
             }
 
+            if (tags) {
+              updated.tags = tags.join(' ');
+            } else {
+              updated.tags = false;
+            }
+
             if (album && artist) {
               updated.artist = artist;
               updated.album = album;
             }
+
+            updated.slug = post.fields.slug;
 
             updated.date = manualDate
               ? moment(manualDate).format('D MMMM YYYY')
@@ -140,7 +141,7 @@ module.exports = {
             if (author && author.fields) {
               updated.author = author.fields.name;
             }
-            updated.canonical = `${siteUrl}/${updated.slug}`;
+            updated.canonical = `${siteUrl}/${slug}`;
             return updated;
           },
           template: {
