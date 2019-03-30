@@ -6,14 +6,18 @@
       <if condition="section.sys.contentType.sys.id === 'oneColumn'">
         <include src='../components/oneColumn/oneColumn.html'></include>
       </if>
+      <if condition="item.fields.slug === 'music'">
+        <include src='../components/TopTracks/topTracks.html'></include>
+      </if>
       <if condition="section.sys.contentType.sys.id === 'articleCollection'">
         <include src='../components/Listing/articleCollection.html'></include>
       </if>
+      <if condition="section.sys.contentType.sys.id === 'childrenListing'">
+        <include src='../components/Listing/listing.html'></include>
+      </if>
 
     </each>
-    <if condition="item.fields.slug === 'music'">
-      <include src='../components/TopTracks/topTracks.html'></include>
-    </if>
-    <include src='../components/Listing/listing.html'></include>
+    
+    
   </block>
 </extends>

@@ -1,0 +1,13 @@
+<li class="post" data-index="{{ index }}">  
+  <a href="/{{ article.slug }}">
+    <if condition="article.fields.shareImage && article.fields.shareImage.fields">
+      <img src="{{ article.fields.shareImage.fields.file.url }}" alt="" />              
+    </if>
+    <h3 class="title">{{ article.fields.title }}</h3>
+    <p class="description">{{ article.fields.description }}</p>
+    <p class="post-date">{{ article.date }}</p>
+    <if condition="article.category">
+      <div class="category">{{ article.category }}</div>
+    </if>
+  </a>
+</li>
