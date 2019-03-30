@@ -1,5 +1,14 @@
 <header>
   <div class="container collapse-all">
     <div class="title"><a href="/">Chatlog</a></div>
+    <nav>
+      <ul>
+        <each loop="article in contentful.pages">
+          <if condition="article.fields.includeInNav == true">
+            <li><a href="/{{ article.fields.slug }}">{{ article.fields.title }}</a></li>
+          </if>
+        </each>      
+      </ul>      
+    </nav>
   </div>
 </header>

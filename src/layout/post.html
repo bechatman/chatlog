@@ -7,8 +7,8 @@
       </div>
     </div>
     <div class="blogPost content">
-      <div class="container">
-        {{ item.content }}
+      <div class="container" data-album="{{ item.album ? item.album : false }}" data-artist="{{ item.artist ? item.artist : false }}">
+        {{{ item.content }}}
       </div>
     </div>
   </block>

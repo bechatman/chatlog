@@ -27,6 +27,19 @@ function loadAlbums(albums) {
   });
 }
 
+function addAlbumArt(album, element) {
+  if (album && element) {
+    const { image } = album;
+    const figure = document.createElement('figure');
+    figure.innerHTML += `<img src="${
+      image[image.length - 1]['#text']
+    }" alt="Album Cover" aria-describedby="copyright" />
+    <figcaption id="copyright">Art provided by Last.fm</figcaption>`;
+    figure.classList.add('albumArt');
+    element.prepend(figure);
+  }
+}
+
 const topTracksSection = document.querySelector('.top-tracks');
 
 if (topTracksSection) {
@@ -35,4 +48,26 @@ if (topTracksSection) {
     .then(results => {
       loadAlbums(results.topalbums.album);
     });
+}
+
+// If there is an artist and album, find the album art.
+
+const blogPost = document.querySelector('.blogPost .container');
+
+if (
+  blogPost &&
+  blogPost.dataset.album !== 'false' &&
+  blogPost.dataset.artist !== 'false'
+) {
+  fetch(lfm('album.search', { album: blogPost.dataset.album }))
+    .then(response => response.json())
+    .then(response => response.results.albummatches.album)
+    .then(results =>
+      results.filter(
+        album =>
+          album.artist === blogPost.dataset.artist &&
+          album.name === blogPost.dataset.album
+      )
+    )
+    .then(album => addAlbumArt(album[0], blogPost));
 }

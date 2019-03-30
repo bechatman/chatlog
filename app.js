@@ -105,7 +105,14 @@ module.exports = {
           },
           transform: post => {
             const updated = post;
-            const { category, content, author, manualDate } = updated.fields;
+            const {
+              category,
+              content,
+              author,
+              manualDate,
+              artist,
+              album
+            } = updated.fields;
             const { createdAt } = updated.sys;
             if (category.fields && category.fields.slug) {
               const cat = category.fields.slug;
@@ -120,6 +127,11 @@ module.exports = {
               updated.content = marked(content);
             } else {
               updated.content = '';
+            }
+
+            if (album && artist) {
+              updated.artist = artist;
+              updated.album = album;
             }
 
             updated.date = manualDate
