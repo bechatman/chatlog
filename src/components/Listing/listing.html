@@ -9,7 +9,8 @@
           </if>
         </if>
         <else>
-          <if condition="section.fields.query && article.fields.tags.includes(section.fields.query)">
+          <if condition="section.fields.query">
+            {{{ JSON.stringify(section.fields.query) }}}
             <include src="../components/Listing/listingItem.html"></include>
           </if>
         </else>
