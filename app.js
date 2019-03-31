@@ -105,15 +105,7 @@ module.exports = {
           },
           transform: post => {
             const updated = post;
-            const {
-              content,
-              author,
-              manualDate,
-              artist,
-              album,
-              tags,
-              slug
-            } = updated.fields;
+            const { content, author, manualDate, tags, slug } = updated.fields;
             const { createdAt } = updated.sys;
 
             if (content) {
@@ -126,11 +118,6 @@ module.exports = {
               updated.tags = tags.join(' ');
             } else {
               updated.tags = false;
-            }
-
-            if (album && artist) {
-              updated.artist = artist;
-              updated.album = album;
             }
 
             updated.slug = post.fields.slug;
