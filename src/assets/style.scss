@@ -60,6 +60,11 @@ main {
   max-width: 60em;
 }
 
+.has-albums .blogPost h2,
+.has-albums .blogPost h3 {
+  clear: both;
+}
+
 .collapse-all {
   padding-top: 1em;
   padding-bottom: 1em;

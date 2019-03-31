@@ -101,7 +101,7 @@ module.exports = {
           name: 'posts',
           id: 'post',
           filters: {
-            order: '-sys.createdAt'
+            order: '-fields.manualDate'
           },
           transform: post => {
             const updated = post;
